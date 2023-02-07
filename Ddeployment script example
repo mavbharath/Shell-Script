@@ -1,0 +1,9 @@
+#!/bin/bash
+# Check out code from Git repository
+git clone https://github.com/example/myapp.git
+# Change to the directory of the cloned repository
+cd myapp
+# Build the application
+./build.sh
+# Copy the build artifacts to the server
+rsync -avz build/ user@server:/var/www/myapp
