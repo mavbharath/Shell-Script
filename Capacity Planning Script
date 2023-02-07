@@ -1,0 +1,9 @@
+#!/bin/bash
+# Define the location of the utilization data file
+data_file=~/data/utilization.txt
+# Collect data about resource utilization
+df >> $data_file
+# Use awk to calculate the average utilization
+average=$(awk '{sum+=$5} END {print sum/NR}' $data_file)
+# Print the average utilization
+echo "Average utilization: $average%"
