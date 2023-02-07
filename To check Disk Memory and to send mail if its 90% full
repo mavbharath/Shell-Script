@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Check disk memory usage
+memory_usage=$(df -h | awk '{print $5}' | sed '1d' | awk '{sum+=$1} END {print sum}')
+
+# Check if memory usage is greater than or equal to 90%
+if [ "$memory_usage" -ge 90 ]; then
+  # Send email notification
+  echo "Disk memory is $memory_usage% full. Please take appropriate action." | mail -s "High Disk Memory Alert" abc@gmail.com
+fi
