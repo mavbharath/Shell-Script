@@ -1,0 +1,10 @@
+#!/bin/bash
+# Define the URL of the service to be monitored
+url=http://www.example.com/
+# Use curl to check if the service is responding
+response=$(curl -s -o /dev/null -w "%{http_code}" $url)
+# Check if the response is not 200 (OK)
+if [ $response -ne 200 ]; then
+  # Send an email notification
+  echo "The service is not responding" | mail -s "Service Failure" admin@example.com
+fi
