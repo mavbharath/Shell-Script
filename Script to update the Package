@@ -1,0 +1,7 @@
+#!/bin/bash
+# Update the package list
+apt-get update
+# Upgrade installed packages
+apt-get upgrade -y
+# Autoremove unused packages
+apt-get autoremove -y
