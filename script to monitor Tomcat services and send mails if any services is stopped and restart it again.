@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Check the status of Tomcat services
+status=$(systemctl is-active tomcat)
+
+# If the service is inactive, send an email and start the service
+if [ "$status" != "active" ]; then
+  # Send email notification
+  echo "Tomcat service is stopped. Please take appropriate action." | mail -s "Tomcat Service Stopped Alert" abc@gmail.com
+  
+  # Start the Tomcat service
+  systemctl start tomcat
+fi
