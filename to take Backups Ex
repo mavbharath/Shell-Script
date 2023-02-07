@@ -1,0 +1,9 @@
+#!/bin/bash
+# Define the location of the backup directory
+backup_dir=~/backups/
+# Define the date for the backup file
+date=$(date +%Y-%m-%d)
+# Create the backup file
+tar czf "$backup_dir$date.tar.gz" ~/data/
+# Copy the backup file to a remote server
+rsync "$backup_dir$date.tar.gz" user@server:/backups/
